@@ -1,0 +1,23 @@
+{
+  "name": "specialcharcount",
+  "version": "1.0.0",
+  "description": "A simple project that outputs number of special characters in the selected file",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokesh1197/SpecialCharCount.git"
+  },
+  "author": "Lokesh Mohanty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lokesh1197/SpecialCharCount/issues"
+  },
+  "homepage": "https://github.com/lokesh1197/SpecialCharCount#readme"
+}
