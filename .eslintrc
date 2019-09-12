@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "arrow-body-style": "off",
+    "comma-dangle": ["error", "never"],
+    "max-len": ["error", { "code": 150 }]
+  },
+  "globals": {
+      "it": false,
+      "describe": false,
+      "beforeEach": false,
+      "afterEach": false
+  }
+}
