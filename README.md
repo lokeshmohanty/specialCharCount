@@ -10,3 +10,10 @@
     npm install --save-dev ts-node-dev
     npm i -D @types/node @types/express
   ```
+
+### Troubleshooting
+
+#### If `npm run dev` returns `Error: ENOSPC: System limit for number of file watchers reached` run 
+  ```
+    echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+  ```
