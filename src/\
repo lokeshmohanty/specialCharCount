@@ -1,0 +1,85 @@
+import * as express from 'express';
+import * as fs from 'fs';
+import * as path from 'path';
+// let express = require('express');
+let app: express.Application = express();
+// let fs = require('fs');
+// let path = require('path');
+
+app.use('/:user/:path', function (req: express.Request, res: express.Response, next: any): void {
+  header(req, res);
+  next();
+}, function (req: express.Request, res:express.Response, next: any): void {
+    const file: string = path.join(process.cwd(), req.params.user, req.params.path);
+    fs.readFile(file, function (err: never, data: any): void {
+      res.write(`${specialCharCount(data)}`);
+      res.end();
+    });
+});
+
+app.use('/:user', function(req: express.Request, res: express.Response, next: any): void {
+  header(req, res);
+  next();
+}, showFiles);
+
+app.get('/', function(req: express.Request, res: express.Response, next: any): void {
+  header(req, res);
+  next();
+}, showUsers);
+
+app.use(function (err: any, req: express.Request, res: express.Response, next: any): void {
+  console.error(err.stack);
+  res.status(500).end(err.message);
+});
+
+// app.get('/:user/:id', function (req: express.Request, res: express.Response, next: void) {
+//   res.end();
+// });
+
+let port: number = Number(process.argv[2]) | 8000;
+app.listen(port,
+  (): void => console.log(`app listening on port ${port}`)
+);
+
+
+function showUsers(req: express.Request, res: express.Response, next: any): void {
+  fs.readdir(req.params.user, function (err: never, files: any){
+    files.forEach(function (file: any): void {
+      res.write("<br />");
+      res.write(`<a href=./${req.params.user}/${file}>${file}</a>`);
+    });
+    res.end();
+  }
+}
+
+function showFiles(req: express.Request, res: express.Response, next: any): void {
+    fs.readdir(process.cwd(), function (err: never, files: any) {
+      files.forEach(function (file: any) {
+        res.write('<br />');
+        res.write(`<a href=./${file}>${file}</a>`);
+      });
+      res.write('<br />');
+      res.end();
+      return
+    });
+}
+
+function specialCharCount(data: any): number {
+  const re = /[^a-zA-Z0-9\s]/g;
+  data = data.toString();
+  console.log(data.match(re));
+  return data.match(re).length;
+  // let str = data.match(re);
+  // return data.length - data.match(re).length;
+  // return data.length - ((data || '').match(re) || []).length;
+}
+
+function header(req: express.Request, res: express.Response): void {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("Hi User, <br /> Welcome to my site");
+  res.write("<br />");
+  res.write("User: " + req.params.user);
+  res.write("<br />");
+  res.write("path: " + req.params.path);
+  res.write("<br />");
+}
