@@ -1,6 +1,6 @@
 {
   "name": "specialcharcount",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple project that outputs number of special characters in the selected file",
   "directories": {
     "test": "test"
