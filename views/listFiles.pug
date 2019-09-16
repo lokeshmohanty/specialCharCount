@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Dashboard
+  body
+    h1 Hi #{user}, Welcome to your Dashboard
+    if files != []
+      h2 Here are your files, Click on a file for details
+      h3
+        ul
+          each file in files
+            li <a href=./#{user}/#{file}>#{file}</a>
+    else
+      h2 You don't have any files. Please add some
+    form(action="/" + user + "/upload", method="post", enctype="multipart/form-data")
+      input(type="file", name="browse", value="Choose File", accept=".txt", multiple="")
+      input(type="submit", name="submit", value="Submit")

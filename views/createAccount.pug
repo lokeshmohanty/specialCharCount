@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Create Account
+  body
+    h1 Create Account
+    if err == 'Username'
+      h2 User already exists!
+    else if err == 'Password' 
+      h2 Passwords do not match!
+    form(action='/newuser', method='post')
+      input(name='user[name]', type='text', placeholder='Username', required='')
+      br
+      input(name='user[password]', type='password', placeholder='Password', required='')
+      br
+      input(name='user[confirm_password]', type='password', placeholder='Confirm Password', required='')
+      br
+      input(type='submit', value='Create Account')

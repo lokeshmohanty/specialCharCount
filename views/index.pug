@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Home
+  body
+    h1 Log In
+    if err
+      h2 Error: Invalid #{err}
+    form(action='/', method='post')
+      input(name='user[name]', type='text', placeholder='Username', required='')
+      br
+      input(name='user[password]', type='password', placeholder='Password', required='')
+      br
+      input(type='submit', value='Log In')
+    input(type='button', value='Create An Account', onclick='redirect()')
+script.
+  function redirect() {
+      window.location.href = '/newuser'
+  }
