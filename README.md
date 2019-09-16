@@ -1,4 +1,4 @@
-## Commands 
+`## Commands 
 
 ### Commands used
 
@@ -16,6 +16,13 @@
     npm i -D @types/node @types/express @types/pug @types/express-formidable
 
     sudo npm install pug-cli -g
+  ```
+
+  - Publish
+  ```
+    npm publish
+    npm version <version number>
+    npm dist-tag add <pkg-name>@<version> <tag>
   ```
 
 ### Troubleshooting
