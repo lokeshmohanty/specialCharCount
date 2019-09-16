@@ -1,14 +1,21 @@
 ## Commands 
 
-### Basic commands
+### Commands used
 
   ```
     npm init
-    npm install express --save
+
+    npm install --save express 
+    npm install --save express-formidable
+    npm install --save pug
+
     npm install --save-dev typescript
     npm install --save-dev eslint
     npm install --save-dev ts-node-dev
-    npm i -D @types/node @types/express
+
+    npm i -D @types/node @types/express @types/pug @types/express-formidable
+
+    sudo npm install pug-cli -g
   ```
 
 ### Troubleshooting
